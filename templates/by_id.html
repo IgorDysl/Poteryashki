@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>id = {{ predmet.id }}</title>
+    <style>
+        img {
+            float: left;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <titleI>{{ predmet.title }}</titleI>
+    <br>
+    {% if predmet.image %}
+        <img src="{{ predmet.image.url }}" alt="{{ predmet.text }}">
+    {% else %}
+        <text>{{ predmet.text }}</text>
+    {% endif %}
+</div>
+<hr>
+<div>
+    <adcom>Добавить комментарий</adcom>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" name="author" placeholder="Автор">
+        <input type="text" name="text" placeholder="Текст">
+        <input type="submit" value="Сохранить">
+    </form>
+</div>
+<hr>
+<com>Комментарии:</com>
+<hr>
+{% for comment in comments %}
+    <comment_author>{{ comment.author }}</comment_author><br>
+    <comment_text>{{ comment.text }}</comment_text>
+    <hr>
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Main</title>
+    <style>
+        img {
+            float: left;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+{% for predmet in predmets %}
+    <div>
+        <a href="{{ predmet.id }}">{{ predmet.title }}</a>
+        <br>
+        {% if predmet.image %}
+            <img src="{{ predmet.image.url }}" alt="{{ predmet.text }}">
+        {% else %}
+            <text>{{ predmet.text }}</text>
+        {% endif %}
+    </div>
+    <hr>
+{% endfor %}
+</body>
+</html>
